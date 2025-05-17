@@ -10,7 +10,7 @@ const Experience = () => {
     >
       {/* Section Title */}
       <div className="mb-12 text-center">
-        <h2 className="text-4xl font-bold tracking-wide sm:text-5xl md:text-6xl">
+        <h2 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 sm:text-5xl md:text-6xl drop-shadow-md">
           Experience
         </h2>
         <div className="w-20 h-1 mt-3 bg-[#8245ec] mx-auto rounded-full"></div>
@@ -27,7 +27,7 @@ const Experience = () => {
       >
         {/* Vertical line - centered horizontally */}
         <div
-          className="absolute left-1/2 transform -translate-x-1/2 border-l border-[#8245ec]/40"
+          className="absolute left-1/2 transform -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#8245ec]/40 via-[#8245ec]/20 to-transparent"
           style={{ height: "100%" }} // full height to cover all cards/logos
         ></div>
 
@@ -44,7 +44,7 @@ const Experience = () => {
               style={{ minHeight: 160 }}
             >
               {/* Logo positioned on vertical line */}
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#0f0f1b] rounded-full border-2 border-[#8245ec] shadow-[0_0_15px_rgba(130,69,236,0.4)] flex items-center justify-center">
+              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#141420] rounded-full border-2 border-[#8245ec] shadow-[0_0_20px_rgba(130,69,236,0.6)] ring-2 ring-purple-900/30 flex items-center justify-center transition-transform duration-500 hover:scale-110">
                 <img
                   src={exp.logo}
                   alt={`${exp.company} logo`}
@@ -64,7 +64,7 @@ const Experience = () => {
                   isLeft ? "md:mr-auto" : "md:ml-auto"
                 }`}
               >
-                <div className="cursor-pointer p-4 sm:p-6 rounded-xl shadow-[0_0_25px_rgba(130,69,236,0.25)] bg-gray-900/80 backdrop-blur-md transition-transform duration-300 ease-in-out hover:shadow-purple-700/50 border border-white/5 mx-4">
+                <div className="cursor-pointer p-4 sm:p-6 rounded-xl shadow-[0_0_30px_rgba(130,69,236,0.25)] bg-gradient-to-br from-[#1c1c2b]/80 to-[#1a1a27]/80 backdrop-blur-lg transition-all duration-300 ease-in-out hover:shadow-[0_0_40px_#8245ec80] border border-white/5 mx-4 hover:-translate-y-1 hover:scale-[1.015]">
                   <div className="flex flex-col gap-4 mb-3">
                     <h3 className="text-xl font-semibold text-white sm:text-2xl">
                       {exp.role} @{" "}
@@ -74,14 +74,14 @@ const Experience = () => {
                       {exp.date}
                     </span>
                   </div>
-                  <p className="mb-4 text-sm text-gray-300 sm:text-base">
+                  <p className="mb-4 text-sm leading-relaxed text-gray-300 sm:text-base">
                     {exp.desc}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 text-xs sm:text-sm text-purple-200 rounded-full bg-[#8245ec]/30"
+                        className="px-3 py-1 text-xs sm:text-sm text-purple-100 rounded-full bg-[#8245ec]/30 shadow-[0_0_10px_#8245ec50]"
                       >
                         {skill}
                       </span>

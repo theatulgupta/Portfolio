@@ -12,7 +12,7 @@ const Education = () => {
     >
       {/* Section Title */}
       <div className="mb-12 text-center">
-        <h2 className="text-4xl font-bold tracking-wide sm:text-5xl">
+        <h2 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 sm:text-5xl drop-shadow-md">
           Education
         </h2>
         <div className="w-20 h-1 mt-3 bg-[#8245ec] mx-auto rounded-full"></div>
@@ -56,15 +56,15 @@ const Education = () => {
               className="w-full"
             >
               <div className="relative">
-                <div className="absolute w-3 h-3 bg-purple-600 border-2 border-gray-900 rounded-full sm:w-4 sm:h-4 -left-5 sm:-left-6 top-8" />
+                <div className="absolute w-3 h-3 bg-purple-600 border-2 border-gray-900 rounded-full sm:w-4 sm:h-4 -left-5 sm:-left-6 top-8 shadow-[0_0_12px_#8245ec]" />
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="bg-gray-900/80 backdrop-blur-lg border border-white/10 rounded-2xl shadow-[0_8px_30px_rgba(130,69,236,0.25)] overflow-hidden transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
+                  className="bg-gradient-to-br from-[#1d1b2f] to-[#151323] backdrop-blur-md border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(130,69,236,0.25)] overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_60px_#8245ec80] cursor-pointer"
                 >
-                  <div className="flex items-center gap-4 p-5 border-b border-white/5 bg-gray-900/60">
+                  <div className="flex items-center gap-4 p-5 border-b border-white/5 bg-[#222030]/70">
                     <img
                       src={edu.img}
                       alt={edu.school}

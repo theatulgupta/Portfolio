@@ -35,27 +35,23 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] lg:px-[20vw] ${
         isScrolled
-          ? "bg-[#050414]/50 backdrop-blur-md shadow-md"
+          ? "bg-gradient-to-r from-[#0e0c1c]/80 to-[#1a162f]/80 backdrop-blur-md shadow-[0_2px_20px_rgba(130,69,236,0.25)]"
           : "bg-transparent"
       }`}
     >
-      <div className="flex items-center justify-between py-5 text-white">
+      <div className="flex items-center justify-between py-5">
         {/* Logo */}
-        <div className="text-lg font-semibold cursor-pointer">
-          <span className="text-[#8245ec]">&lt;</span>
-          <span className="text-white">Atul</span>
-          <span className="text-[#8245ec]">/</span>
-          <span className="text-white">Gupta</span>
-          <span className="text-[#8245ec]">&gt;</span>
+        <div className="text-lg font-extrabold tracking-wider text-transparent cursor-pointer bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 drop-shadow-md">
+          <span className="">&lt;Atul/Gupta&gt;</span>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden space-x-8 text-gray-300 md:flex">
+        <ul className="hidden space-x-8 md:flex">
           {menuItems.map((item) => (
             <li key={item.id}>
               <button
                 onClick={() => handleMenuItemClick(item.id)}
-                className="cursor-pointer hover:text-[#8245ec] transition-colors"
+                className="cursor-pointer text-gray-300 hover:text-white transition-all duration-200 hover:drop-shadow-[0_0_6px_#8245ec]"
               >
                 {item.label}
               </button>
@@ -69,7 +65,7 @@ const Navbar = () => {
             href="https://github.com/theatulgupta"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#8245ec] transition-colors"
+            className="text-gray-300 hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_#8245ec80]"
           >
             <FaGithub size={24} />
           </a>
@@ -77,7 +73,7 @@ const Navbar = () => {
             href="https://www.linkedin.com/in/theatulgupta"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#8245ec] transition-colors"
+            className="text-gray-300 hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_#8245ec80]"
           >
             <FaLinkedin size={24} />
           </a>
@@ -101,13 +97,13 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414]/50 backdrop-blur-lg z-50 rounded-lg shadow-lg md:hidden">
-          <ul className="flex flex-col items-center py-4 space-y-4 text-gray-300">
+        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-gradient-to-br from-[#1c1a2d]/90 to-[#151323]/90 backdrop-blur-md z-50 rounded-2xl shadow-[0_0_40px_rgba(130,69,236,0.2)] border border-white/10 md:hidden">
+          <ul className="flex flex-col items-center py-4 space-y-4">
             {menuItems.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => handleMenuItemClick(item.id)}
-                  className="transition-colors cursor-pointer hover:text-white"
+                  className="cursor-pointer text-gray-300 hover:text-white transition-all duration-200 hover:drop-shadow-[0_0_6px_#8245ec]"
                 >
                   {item.label}
                 </button>
@@ -118,7 +114,7 @@ const Navbar = () => {
                 href="https://github.com/theatulgupta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 transition-colors hover:text-white"
+                className="text-gray-300 transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_8px_#8245ec80]"
               >
                 <FaGithub size={24} />
               </a>
@@ -126,7 +122,7 @@ const Navbar = () => {
                 href="https://www.linkedin.com/in/theatulgupta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 transition-colors hover:text-white"
+                className="text-gray-300 transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_8px_#8245ec80]"
               >
                 <FaLinkedin size={24} />
               </a>

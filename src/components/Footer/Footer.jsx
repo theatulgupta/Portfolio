@@ -1,14 +1,18 @@
+import "react-toastify/dist/ReactToastify.css";
+
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import emailjs from "@emailjs/browser";
 
 const Footer = () => {
   const [subscriberEmail, setSubscriberEmail] = useState("");
-  const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     emailjs
       .send(
@@ -19,21 +23,29 @@ const Footer = () => {
       )
       .then(
         () => {
-          setStatus("Thank you for subscribing!");
+          toast.success("Thank you for subscribing!", {
+            position: "top-right",
+            theme: "dark",
+          });
           setSubscriberEmail("");
+          setIsLoading(false);
         },
         () => {
-          setStatus("Failed to subscribe. Please try again later.");
+          toast.error("Failed to subscribe. Please try again later.", {
+            position: "top-right",
+            theme: "dark",
+          });
+          setIsLoading(false);
         }
       );
   };
 
   return (
-    <footer className="bg-[#0f0f1b] border-t border-white/5 text-white py-12 px-6 md:px-[7vw] lg:px-[15vw] font-sans">
+    <footer className="bg-gradient-to-br from-[#1a1829] to-[#12101c] border-t border-white/10 text-white py-12 px-6 md:px-[7vw] lg:px-[15vw] font-sans backdrop-blur-md shadow-[0_0_60px_#8245ec20]">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
         {/* Left - Text */}
         <div className="text-center md:text-left">
-          <h2 className="text-2xl font-semibold mb-1 text-[#8245ec]">
+          <h2 className="mb-1 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
             Atul Kumar Gupta
           </h2>
           <p className="text-sm text-gray-400">
@@ -47,7 +59,7 @@ const Footer = () => {
             href="https://github.com/theatulgupta"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#8245ec] transition"
+            className="hover:text-[#8245ec] transition hover:drop-shadow-[0_0_8px_#8245ec80]"
           >
             <FaGithub />
           </a>
@@ -55,7 +67,7 @@ const Footer = () => {
             href="https://linkedin.com/in/theatulgupta"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#8245ec] transition"
+            className="hover:text-[#8245ec] transition hover:drop-shadow-[0_0_8px_#8245ec80]"
           >
             <FaLinkedin />
           </a>
@@ -63,7 +75,7 @@ const Footer = () => {
             href="mailto:atulgupta3058@gmail.com"
             title="Send Email"
             target="_blank"
-            className="hover:text-[#8245ec] transition"
+            className="hover:text-[#8245ec] transition hover:drop-shadow-[0_0_8px_#8245ec80]"
           >
             <FaEnvelope />
           </a>
@@ -81,24 +93,48 @@ const Footer = () => {
             required
             value={subscriberEmail}
             onChange={(e) => setSubscriberEmail(e.target.value)}
-            className="px-4 py-2 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8245ec] text-sm w-64"
+            className="px-4 py-2 rounded-full bg-[#1e1b2e] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8245ec] text-sm w-64 border border-white/10 shadow-sm"
           />
           <button
             type="submit"
-            className="bg-[#8245ec] hover:bg-[#6a2bdc] text-white px-5 py-2 rounded-full text-sm font-semibold transition"
+            disabled={isLoading}
+            className={`bg-[#8245ec] hover:bg-[#6a2bdc] text-white px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-purple-600/50 ${
+              isLoading ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           >
-            Subscribe
+            {isLoading ? (
+              <svg
+                className="w-4 h-4 text-white animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            ) : (
+              "Subscribe"
+            )}
           </button>
         </form>
-        {status && (
-          <p className="mt-2 text-sm text-center text-gray-400">{status}</p>
-        )}
       </div>
 
       {/* Bottom - Copyright */}
       <div className="mt-10 text-xs text-center text-gray-500">
         © {new Date().getFullYear()} Atul Kumar Gupta. All rights reserved.
       </div>
+      <ToastContainer />
     </footer>
   );
 };
